@@ -1,0 +1,116 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile information stored upon authentication.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Firebase Auth UID of the user."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address of the user."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name."
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "Optional user avatar URL."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Account creation timestamp."
+        }
+      },
+      "required": ["id", "email"]
+    },
+    "Conversation": {
+      "title": "Conversation",
+      "description": "A chat thread created by a user.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique conversation ID."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Owner user ID."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title or topic of the conversation."
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Unix timestamp in ms when created."
+        },
+        "updatedAt": {
+          "type": "number",
+          "description": "Unix timestamp in ms when last active."
+        },
+        "pinned": {
+          "type": "boolean",
+          "description": "Whether thread is pinned."
+        },
+        "archived": {
+          "type": "boolean",
+          "description": "Whether thread is archived."
+        }
+      },
+      "required": ["id", "userId", "title", "createdAt", "updatedAt"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "A single prompt or response within a conversation.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique message ID."
+        },
+        "conversationId": {
+          "type": "string",
+          "description": "ID of parent conversation."
+        },
+        "userId": {
+          "type": "string",
+          "description": "User ID who owns this conversation."
+        },
+        "role": {
+          "type": "string",
+          "enum": ["user", "model"],
+          "description": "Message author role."
+        },
+        "content": {
+          "type": "string",
+          "description": "Text content of message."
+        },
+        "timestamp": {
+          "type": "number",
+          "description": "Timestamp in ms."
+        }
+      },
+      "required": ["id", "conversationId", "userId", "role", "content", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Private profile document for each authenticated user."
+    },
+    "/users/{userId}/conversations/{conversationId}": {
+      "schema": "Conversation",
+      "description": "Conversations owned by the authenticated user."
+    },
+    "/users/{userId}/conversations/{conversationId}/messages/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Messages within a conversation owned by the authenticated user."
+    }
+  }
+}

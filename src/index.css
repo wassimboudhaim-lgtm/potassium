@@ -1,0 +1,193 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #000000;
+    --text-main: #ffffff;
+    --border-main: #17242c;
+    --cyan-primary: #00f0ff;
+    --cyan-greenish: #00f5a0;
+    --cyan-deep: #0066ff;
+    --cyan-black: #03080b;
+    --cyan-glow: rgba(0, 240, 255, 0.35);
+  }
+
+  .dark {
+    --bg-main: #000000;
+    --text-main: #ffffff;
+    --border-main: #142229;
+  }
+
+  body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 240, 255, 0.2);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 240, 255, 0.45);
+  }
+
+  /* KaTeX Math Styling */
+  .katex {
+    font-size: 1.05em;
+    color: inherit !important;
+  }
+
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.6rem 0;
+    margin: 0.8rem 0;
+  }
+
+  .dark .katex {
+    color: #ffffff !important;
+  }
+}
+
+/* Dynamic Cyan-Black Ambient Glow Keyframes */
+@keyframes ambientDrift1 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.28;
+  }
+  33% {
+    transform: translate(40px, -30px) scale(1.15);
+    opacity: 0.38;
+  }
+  66% {
+    transform: translate(-30px, 25px) scale(0.95);
+    opacity: 0.24;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.28;
+  }
+}
+
+@keyframes ambientDrift2 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.22;
+  }
+  50% {
+    transform: translate(-50px, 40px) scale(1.2);
+    opacity: 0.35;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.22;
+  }
+}
+
+@keyframes dynamicHueFlow {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(25deg);
+  }
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}
+
+.ambient-aura-1 {
+  animation: ambientDrift1 14s ease-in-out infinite alternate;
+}
+
+.ambient-aura-2 {
+  animation: ambientDrift2 18s ease-in-out infinite alternate;
+}
+
+.dynamic-hue-cycle {
+  animation: dynamicHueFlow 12s ease-in-out infinite;
+}
+
+/* Prestigious White & Cyan Reasoning Glow Keyframes */
+@keyframes prestigiousPulse {
+  0%, 100% {
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.28), 0 0 60px rgba(0, 240, 255, 0.12), 0 0 90px rgba(255, 255, 255, 0.1), inset 0 0 20px rgba(0, 240, 255, 0.08);
+    border-color: rgba(0, 240, 255, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 55px rgba(0, 240, 255, 0.5), 0 0 95px rgba(0, 240, 255, 0.25), 0 0 130px rgba(255, 255, 255, 0.25), inset 0 0 35px rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+@keyframes lightSweep {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  50%, 100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+@keyframes orbitalRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitalRotateReverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes equalizerBar {
+  0%, 100% {
+    height: 6px;
+    opacity: 0.5;
+  }
+  50% {
+    height: 22px;
+    opacity: 1;
+  }
+}
+
+.prestigious-reasoning-card {
+  animation: prestigiousPulse 3.5s ease-in-out infinite;
+}
+
+.prestigious-light-sweep {
+  animation: lightSweep 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.prestigious-orbit-ring-cw {
+  animation: orbitalRotate 14s linear infinite;
+}
+
+.prestigious-orbit-ring-ccw {
+  animation: orbitalRotateReverse 10s linear infinite;
+}
+
+.prestigious-equalizer-bar {
+  animation: equalizerBar 1.2s ease-in-out infinite;
+}
+

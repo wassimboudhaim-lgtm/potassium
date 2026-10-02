@@ -1,0 +1,6 @@
+{
+  "name": "POTASSIUM",
+  "description": "POTASSIUM - A high-performance, precision AI assistant engineered for general intelligence, deep reasoning, code generation, multimodal analysis, and document understanding.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
